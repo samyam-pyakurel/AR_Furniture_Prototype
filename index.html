@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AR Furniture Prototype</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">AR Furniture</div>
+    <nav>
+      <button id="homeBtn">Home</button>
+      <button id="catalogBtn">Catalog</button>
+      <button id="cartBtn">Cart</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h1>Transform Your Space with AR</h1>
+      <p>Visualize furniture in your home before you buy.</p>
+      <button id="exploreBtn">Explore Now</button>
+    </section>
+
+    <section id="catalog" class="hidden">
+      <h2>Our Collection</h2>
+      <div class="product-grid">
+        <div class="product">
+          <img src="https://via.placeholder.com/300" alt="Chair" />
+          <h3>Modern Chair</h3>
+          <p>$120</p>
+          <button class="addToCart">Add to Cart</button>
+        </div>
+        <div class="product">
+          <img src="https://via.placeholder.com/300" alt="Table" />
+          <h3>Wooden Table</h3>
+          <p>$250</p>
+          <button class="addToCart">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="cart" class="hidden">
+      <h2>Your Cart</h2>
+      <ul id="cartList"></ul>
+      <button id="checkoutBtn">Checkout</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 AR Furniture Prototype</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
