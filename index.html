@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>AR Furniture Prototype</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Optional: use a serif display font for headings -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- NAV -->
   <header class="site-header">
     <div class="nav-inner">
-      <nav class="main-nav">
+      <nav class="main-nav" role="navigation" aria-label="Main">
         <a class="nav-link" data-target="home">Home</a>
         <a class="nav-link" data-target="about">About</a>
         <a class="nav-link" data-target="shop">Shop</a>
@@ -20,135 +18,137 @@
         <a class="nav-link" data-target="inventory">Inventory</a>
       </nav>
 
-      <div class="logo">
+      <div class="logo" aria-hidden="true">
         <img src="https://via.placeholder.com/80x40?text=Logo" alt="logo">
       </div>
 
-      <div class="cart-icon" id="cartIcon" title="Open cart">
+      <div class="cart-icon" id="cartIcon" title="Open cart" aria-label="Open cart">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M7 4h-2l-1 2H1v2h2l3.6 7.59L5.25 18A1 1 0 0 0 6 20h12v-2H7.42a1 1 0 0 1-.94-.66l.03-.09L9.1 12h6.45a1 1 0 0 0 .92-.62l3-7H6.21L7 4z"/></svg>
       </div>
     </div>
   </header>
 
-  <!-- TOP PRODUCT ROW (framed images) -->
-  <section class="product-row">
-    <div class="product-frame">
-      <img src="https://via.placeholder.com/220x160?text=Chair" alt="Hercules Chair">
-      <div class="caption">Hercules Chair</div>
-    </div>
-    <div class="product-frame">
-      <img src="https://via.placeholder.com/220x160?text=Table" alt="Table-desk">
-      <div class="caption">Table-desk</div>
-    </div>
-    <div class="product-frame">
-      <img src="https://via.placeholder.com/220x160?text=Couch" alt="Couch">
-      <div class="caption">Couch</div>
-    </div>
-    <div class="product-frame">
-      <img src="https://via.placeholder.com/220x160?text=Bed" alt="Bed">
-      <div class="caption">Bed</div>
-    </div>
-  </section>
-
-  <!-- CTA BUTTON -->
-  <div class="center-cta">
-    <button class="btn-ghost" id="browseMoreBtn">Browse more</button>
-  </div>
-
-  <!-- HERO / JOIN ROW -->
-  <section class="hero" id="home">
-    <h2 class="kicker">FURNITURE ORDER SYSTEM</h2>
-
-    <div class="two-col">
-      <div class="left">
-        <h1>Join us now,<br><span class="accent">To Save Big</span></h1>
-        <p class="lead">Our furniture order system is designed to streamline your shopping experience — from browsing to delivery. Fast, reliable, and built with your comfort in mind.</p>
-        <button class="btn-primary" id="signupBtn">Sign up here</button>
-
-        <div class="hero-image">
-          <img src="https://via.placeholder.com/380x220?text=Store+Interior" alt="store interior">
-        </div>
+  <main>
+    <!-- Top framed product row -->
+    <section class="product-row" aria-label="Featured products">
+      <div class="product-frame">
+        <img src="chair.png" alt="Hercules Chair">
+        <div class="caption">Hercules Chair</div>
       </div>
+      <div class="product-frame">
+        <img src="table.png" alt="Table-desk">
+        <div class="caption">Table - desk</div>
+      </div>
+      <div class="product-frame">
+        <img src="couch.png" alt="Couch">
+        <div class="caption">Couch</div>
+      </div>
+      <div class="product-frame">
+        <img src="bed.png" alt="Bed">
+        <div class="caption">Bed</div>
+      </div>
+    </section>
 
-      <div class="right">
-        <p class="small">Make every piece count. Because great design starts with a smooth order.</p>
-        <div class="box form-box">
-          <form id="joinForm">
-            <h3 class="form-title">Join</h3>
-            <label>Customer name<input type="text" name="name" placeholder="Your name"></label>
-            <label>Address<input type="text" name="address" placeholder="Address"></label>
-            <label>Email<input type="email" name="email" placeholder="email@example.com"></label>
-            <label>Phone<input type="tel" name="phone" placeholder="+1 555 555 5555"></label>
-            <label>Password<input type="password" name="password" placeholder="password"></label>
-            <button type="submit" class="btn-primary full">Join</button>
-          </form>
+    <div class="center-cta">
+      <button class="btn-ghost" id="browseMoreBtn">Browse more</button>
+    </div>
+
+    <!-- Hero / join and forms -->
+    <section class="hero" id="home">
+      <h2 class="kicker">FURNITURE ORDER SYSTEM</h2>
+
+      <div class="two-col">
+        <div class="left">
+          <h1>Join us now,<br><span class="accent">To Save Big</span></h1>
+          <p class="lead">Our furniture order system is designed to streamline your shopping experience — from browsing to delivery. Fast, reliable, and built with your comfort in mind.</p>
+          <button class="btn-primary" id="signupBtn">Sign up here</button>
+
+          <div class="hero-image">
+            <img src="https://via.placeholder.com/380x220?text=Store+Interior" alt="store interior">
+          </div>
         </div>
 
-        <div class="box form-box login-box">
-          <form id="loginForm">
-            <h3 class="form-title">Login</h3>
-            <label>Email<input type="email" name="loginEmail" placeholder="email@example.com"></label>
-            <label>Password<input type="password" name="loginPassword" placeholder="password"></label>
-            <button type="submit" class="btn-primary full">Log in</button>
-          </form>
+        <div class="right">
+          <p class="small">Make every piece count. Because great design starts with a smooth order.</p>
+
+          <div class="box form-box" id="joinFormWrap">
+            <form id="joinForm">
+              <h3 class="form-title">Join</h3>
+              <label>Customer name<input type="text" name="name" placeholder="Your name" required></label>
+              <label>Address<input type="text" name="address" placeholder="Address" required></label>
+              <label>Email<input type="email" name="email" placeholder="email@example.com" required></label>
+              <label>Phone<input type="tel" name="phone" placeholder="+1 555 555 5555"></label>
+              <label>Password<input type="password" name="password" placeholder="password" required></label>
+              <button type="submit" class="btn-primary full">Join</button>
+            </form>
+          </div>
+
+          <div class="box form-box login-box">
+            <form id="loginForm">
+              <h3 class="form-title">Login</h3>
+              <label>Email<input type="email" name="loginEmail" placeholder="email@example.com" required></label>
+              <label>Password<input type="password" name="loginPassword" placeholder="password" required></label>
+              <button type="submit" class="btn-primary full">Log in</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- INVENTORY SECTION -->
-  <section class="inventory" id="inventory">
-    <div class="inventory-header">
-      <h3>Inventory</h3>
-      <div class="sort">Sort by ▾</div>
-    </div>
+    <!-- Inventory -->
+    <section class="inventory" id="inventory">
+      <div class="inventory-header">
+        <h3>Inventory</h3>
+        <div class="sort">Sort by ▾</div>
+      </div>
 
-    <div class="inventory-item">
-      <div class="inv-left">
-        <div class="sketch-frame">
-          <img src="https://via.placeholder.com/240x260?text=Hercules+Chair" alt="Hercules Chair">
+      <div class="inventory-item" role="region" aria-label="Hercules Chair details">
+        <div class="inv-left">
+          <div class="sketch-frame">
+            <img src="chair.png" alt="Hercules Chair">
+          </div>
+        </div>
+
+        <div class="inv-right">
+          <h4>Hercules Chair</h4>
+          <p class="inv-price">$149.99</p>
+          <p class="inv-desc">Built with a heavy-duty steel frame and reinforced legs, this chair offers exceptional stability and a high weight capacity. Ideal for restaurants, events, and everyday use. Stackable for easy storage.</p>
+
+          <ul class="specs">
+            <li>Overall Height: 32 inches</li>
+            <li>Seat Width: 17 inches</li>
+            <li>Seat Height: 17 inches</li>
+            <li>Back Height: 15 inches</li>
+            <li>Weight: 10 lbs</li>
+          </ul>
+
+          <div class="inv-actions">
+            <button class="btn-secondary addInventory" data-name="Hercules Chair" data-price="149.99">Add to cart</button>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="inv-right">
-        <h4>Hercules Chair</h4>
-        <p class="inv-price">$149.99</p>
-        <p class="inv-desc">Built with a heavy-duty steel frame and reinforced legs, this chair offers exceptional stability and a high weight capacity. Ideal for restaurants, events, and everyday use. Stackable for easy storage.</p>
+    <!-- Cart summary -->
+    <section class="cart-summary" id="cartSummary">
+      <h3>My cart</h3>
+      <div class="cart-wrap">
+        <div class="cart-image">
+          <img src="chair.png" alt="cart item">
+        </div>
+        <div class="cart-details">
+          <div class="cart-lines" id="cartItemsList">Your cart is empty</div>
 
-        <ul class="specs">
-          <li>Overall Height: 32 inches</li>
-          <li>Seat Width: 17 inches</li>
-          <li>Seat Height: 17 inches</li>
-          <li>Back Height: 15 inches</li>
-          <li>Weight: 10 lbs</li>
-        </ul>
+          <table class="cart-totals" role="table" aria-label="Cart totals">
+            <tr><td>Item subtotal</td><td id="subtotal">$0.00</td></tr>
+            <tr><td>Tax</td><td id="tax">$0.00</td></tr>
+            <tr class="total-row"><td>Total</td><td id="grandTotal">$0.00</td></tr>
+          </table>
 
-        <div class="inv-actions">
-          <button class="btn-secondary addInventory" data-name="Hercules Chair" data-price="149.99">Add to cart</button>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CART SUMMARY -->
-  <section class="cart-summary" id="cartSummary">
-    <h3>My cart</h3>
-    <div class="cart-wrap">
-      <div class="cart-image">
-        <img src="https://via.placeholder.com/120x100?text=Item" alt="cart item">
-      </div>
-      <div class="cart-details">
-        <div class="cart-lines" id="cartItemsList">Your cart is empty</div>
-
-        <table class="cart-totals">
-          <tr><td>Item subtotal</td><td id="subtotal">$0.00</td></tr>
-          <tr><td>Tax</td><td id="tax">$0.00</td></tr>
-          <tr class="total-row"><td>Total</td><td id="grandTotal">$0.00</td></tr>
-        </table>
-
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer class="site-footer">
     <p>© 2025 AR Furniture Prototype</p>

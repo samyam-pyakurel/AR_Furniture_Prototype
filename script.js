@@ -1,31 +1,17 @@
-/* Basic behavior:
-   - nav links scroll to sections or show content
-   - Add-to-cart buttons add items, update subtotal / tax / total
-   - Browse and cart icon toggles
-*/
-
 document.addEventListener('DOMContentLoaded', () => {
-  // NAV links: we'll simply scroll to major areas
+  // NAV links scroll
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       const target = link.getAttribute('data-target');
       if (target === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (target === 'inventory') {
-        document.getElementById('inventory').scrollIntoView({ behavior: 'smooth' });
-      } else if (target === 'shop' || target === 'about' || target === 'contact') {
-        // for demo, scroll to hero for non-existent pages
-        document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
-      }
+      else if (target === 'inventory') document.getElementById('inventory').scrollIntoView({ behavior: 'smooth' });
+      else document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
     });
   });
 
-  // Browse more button scrolls to inventory
+  // Browse more
   const browseMoreBtn = document.getElementById('browseMoreBtn');
-  if (browseMoreBtn) {
-    browseMoreBtn.addEventListener('click', () => {
-      document.getElementById('inventory').scrollIntoView({ behavior: 'smooth' });
-    });
-  }
+  if (browseMoreBtn) browseMoreBtn.addEventListener('click', () => { document.getElementById('inventory').scrollIntoView({behavior:'smooth'}); });
 
   // Simple cart model
   let cart = [];
@@ -48,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const subtotal = cart.reduce((s, i) => s + Number(i.price), 0);
-    const tax = +(subtotal * 0.086).toFixed(2); // example tax 8.6%
+    const tax = +(subtotal * 0.086).toFixed(2);
     const total = +(subtotal + tax).toFixed(2);
 
     subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
@@ -56,43 +42,40 @@ document.addEventListener('DOMContentLoaded', () => {
     totalEl.textContent = `$${total.toFixed(2)}`;
   };
 
-  // Add inventory button(s)
+  // Add-to-cart inventory buttons
   document.querySelectorAll('.addInventory').forEach(btn => {
     btn.addEventListener('click', () => {
       const name = btn.dataset.name || 'Item';
       const price = parseFloat(btn.dataset.price || '0');
       cart.push({ name, price });
       updateCartUI();
-      // visual feedback
       btn.textContent = 'Added';
       btn.disabled = true;
-      setTimeout(() => { btn.textContent = 'Add to cart'; btn.disabled = false; }, 1000);
+      setTimeout(()=>{btn.textContent='Add to cart'; btn.disabled=false;},900);
     });
   });
 
-  // Optional: cart icon scroll to cart summary
+  // Cart icon scrolls to cart summary
   const cartIcon = document.getElementById('cartIcon');
-  if (cartIcon) {
-    cartIcon.addEventListener('click', () => {
-      document.getElementById('cartSummary').scrollIntoView({ behavior: 'smooth' });
-    });
-  }
+  if (cartIcon) cartIcon.addEventListener('click', () => { document.getElementById('cartSummary').scrollIntoView({behavior:'smooth'}); });
 
-  // Forms: simple prevent default
+  // Forms
   document.getElementById('joinForm').addEventListener('submit', e => {
     e.preventDefault();
-    alert('Thanks for joining! (Prototype only)');
+    alert('Thanks for joining! (prototype)');
+    document.getElementById('joinForm').reset();
   });
   document.getElementById('loginForm').addEventListener('submit', e => {
     e.preventDefault();
-    alert('Logged in (prototype).');
+    alert('Logged in (prototype)');
+    document.getElementById('loginForm').reset();
   });
 
-  // Signup button quick scroll
+  // Signup button scroll
   document.getElementById('signupBtn').addEventListener('click', () => {
-    document.getElementById('joinForm').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('joinForm').scrollIntoView({behavior:'smooth'});
   });
 
-  // initial cart UI render
+  // initial render
   updateCartUI();
 });
